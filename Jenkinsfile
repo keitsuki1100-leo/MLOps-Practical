@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        PYTHON = 'python'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -16,35 +12,35 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Python packages...'
-                bat 'pip install dvc pandas pyyaml'
+                bat 'C:\\Users\\MAYANK\\Desktop\\MLOps-Practical\\.venv\\Scripts\\pip.exe install dvc pandas pyyaml'
             }
         }
 
         stage('Preprocess') {
             steps {
                 echo 'Preprocessing data...'
-                bat 'python src/preprocess.py'
+                bat 'C:\\Users\\MAYANK\\Desktop\\MLOps-Practical\\.venv\\Scripts\\python.exe src\\preprocess.py'
             }
         }
 
         stage('Train') {
             steps {
                 echo 'Training model...'
-                bat 'python src/train.py'
+                bat 'C:\\Users\\MAYANK\\Desktop\\MLOps-Practical\\.venv\\Scripts\\python.exe src\\train.py'
             }
         }
 
         stage('Evaluate') {
             steps {
                 echo 'Evaluating model...'
-                bat 'python src/evaluate.py'
+                bat 'C:\\Users\\MAYANK\\Desktop\\MLOps-Practical\\.venv\\Scripts\\python.exe src\\evaluate.py'
             }
         }
 
         stage('DVC Push') {
             steps {
                 echo 'Pushing data to DVC storage...'
-                bat 'dvc push'
+                bat 'C:\\Users\\MAYANK\\Desktop\\MLOps-Practical\\.venv\\Scripts\\python.exe -m dvc push'
             }
         }
     }
