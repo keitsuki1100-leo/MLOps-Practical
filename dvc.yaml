@@ -1,0 +1,35 @@
+stages:
+  preprocess:
+    cmd: c:/Users/MAYANK/Desktop/MLOps-Practical/.venv/Scripts/python.exe src/preprocess.py
+    deps:
+      - data/train.csv
+      - data/test.csv
+      - src/preprocess.py
+    params:
+      - preprocess
+    outs:
+      - data/processed_train.csv
+      - data/processed_test.csv
+
+  train:
+    cmd: c:/Users/MAYANK/Desktop/MLOps-Practical/.venv/Scripts/python.exe src/train.py
+    deps:
+      - data/processed_train.csv
+      - src/train.py
+    params:
+      - train
+    outs:
+      - models/model_v1.txt
+    metrics:
+      - metrics/train_metrics.json:
+          cache: false
+
+  evaluate:
+    cmd: c:/Users/MAYANK/Desktop/MLOps-Practical/.venv/Scripts/python.exe src/evaluate.py
+    deps:
+      - data/processed_test.csv
+      - models/model_v1.txt
+      - src/evaluate.py
+    metrics:
+      - metrics/test_metrics.json:
+          cache: false

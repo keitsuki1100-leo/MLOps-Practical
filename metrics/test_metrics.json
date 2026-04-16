@@ -1,0 +1,6 @@
+{
+  "test_accuracy": 0.6,
+  "test_f1": 0.5499999999999999,
+  "test_precision": 0.57,
+  "test_recall": 0.53
+}
