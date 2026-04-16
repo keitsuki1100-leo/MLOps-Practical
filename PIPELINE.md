@@ -1,9 +1,15 @@
 # Pipeline Diagram
 
+## DVC Pipeline
 ```
 train.csv → preprocess.py → processed_train.py → train.py → model.txt
                                                               ↓
 test.csv  → preprocess.py → processed_test.py → evaluate.py → results
+```
+
+## Jenkins Pipeline (Jenkinsfile)
+```
+Preprocess → Train → Evaluate
 ```
 
 ## Stages:
