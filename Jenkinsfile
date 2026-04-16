@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON = 'python3'
+        PYTHON = 'python'
     }
 
     stages {
@@ -16,35 +16,35 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Python packages...'
-                sh 'pip install dvc pandas pyyaml'
+                bat 'pip install dvc pandas pyyaml'
             }
         }
 
         stage('Preprocess') {
             steps {
                 echo 'Preprocessing data...'
-                sh 'python src/preprocess.py'
+                bat 'python src/preprocess.py'
             }
         }
 
         stage('Train') {
             steps {
                 echo 'Training model...'
-                sh 'python src/train.py'
+                bat 'python src/train.py'
             }
         }
 
         stage('Evaluate') {
             steps {
                 echo 'Evaluating model...'
-                sh 'python src/evaluate.py'
+                bat 'python src/evaluate.py'
             }
         }
 
         stage('DVC Push') {
             steps {
                 echo 'Pushing data to DVC storage...'
-                sh 'dvc push'
+                bat 'dvc push'
             }
         }
     }
